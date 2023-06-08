@@ -22,27 +22,33 @@ const renderHead = () => {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.6/gsap.min.js"></script>
     <script src="minified/DrawSVGPlugin.min.js"></script>
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+    
+    @import url('https://fonts.googleapis.com/css2?family=Lora&family=Roboto&display=swap');
+    .brand_logodiv{
+      position: absolute;
+      top: 2%;
+      right: 83%;
+    }
     .titlediv{
         position: absolute;
-        right: 11%;
-        top:35%;
+        left: 7%;
+        top:25%;
         height: auto;
         width: 30%;
         z-index: 999;
     }
     .fullnamediv{
         position: absolute;
-        right: 8%;
-        top:68%;
+        Left: 8%;
+        top:70%;
         height: auto;
         width: auto;
         z-index: 999;
     }
     .datediv{
         position: absolute;
-        right: -3%;
-        top:21%;
+        left: -12%;
+        top:90%;
         height: auto;
         width: 350px;
         text-align: center;
@@ -67,13 +73,17 @@ const renderHead = () => {
     .avatardiv{
       position: absolute;
       top: 14.5%;
-      left: 5.5%;
+      right: 5.5%;
   }
   .avatar{
       border-radius: 100%;
       height:400px;
       width: 400px;
   }
+  .brand_logo{
+    height:40px;
+    width: 120px;
+}
   </style>
     </head>
   `;
@@ -82,11 +92,12 @@ const renderHead = () => {
 const renderBody = (post) => {
   // Define the list of variables as an array
 var bgList = [
-  "https://bigbuddystore.s3.ap-south-1.amazonaws.com/thumbnail-templates/1.1.jpg",
-  "https://bigbuddystore.s3.ap-south-1.amazonaws.com/thumbnail-templates/1.2.jpg", 
-  "https://bigbuddystore.s3.ap-south-1.amazonaws.com/thumbnail-templates/1.3.jpg", 
-  "https://bigbuddystore.s3.ap-south-1.amazonaws.com/thumbnail-templates/1.4.jpg", 
-  "https://bigbuddystore.s3.ap-south-1.amazonaws.com/thumbnail-templates/1.5.jpg"
+  "https://bigbuddystore.s3.ap-south-1.amazonaws.com/thumbnail-templates/2.1.png",
+  // "https://bigbuddystore.s3.ap-south-1.amazonaws.com/thumbnail-templates/1.1.jpg", 
+  // "https://bigbuddystore.s3.ap-south-1.amazonaws.com/thumbnail-templates/1.2.jpg", 
+  // "https://bigbuddystore.s3.ap-south-1.amazonaws.com/thumbnail-templates/1.3.jpg", 
+  // "https://bigbuddystore.s3.ap-south-1.amazonaws.com/thumbnail-templates/1.4.jpg", 
+  // "https://bigbuddystore.s3.ap-south-1.amazonaws.com/thumbnail-templates/1.5.jpg"
 ];
 const currentDate = new Date();
 
@@ -104,7 +115,7 @@ var randomBgIndex = Math.floor(Math.random() * bgList.length);
 var custom_image = bgList[randomBgIndex];
 
 
-  const { title, avatar, full_name } = post;
+  const { title, avatar, full_name, brand_logo } = post;
   return `
   <body style="margin: 0; padding: 0; height: 100vh;">
     <div style="height: 100%; display: flex; justify-content: center; align-items: center;">
@@ -121,6 +132,9 @@ var custom_image = bgList[randomBgIndex];
     </div>
     <div class="avatardiv">
     <img src="${avatar}" class="avatar" />
+</div>
+<div class="brand_logodiv">
+    <img src="${brand_logo}" class="brand_logo" />
 </div>
   </body>
 `;
